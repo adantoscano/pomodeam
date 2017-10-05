@@ -41,7 +41,7 @@ SVG.Clock = function(size, options) {
 
   /* break2 */
   for (i = 179; i >= 150; i--)
-    this.rect(1, 4).move(50, 0).fill(green).rotate(i * 1, 50, 50)
+    this.rect(1, 4).move(50, 0).fill(red).rotate(i * 1, 50, 50)
 
 
 
@@ -68,7 +68,7 @@ SVG.extend(SVG.Clock, {
     this.date = date;
     this.drawMinutesPointer();
     var minutes = this.date.getMinutes();
-    (minutes >= 25 && minutes <= 29) || (minutes >= 55 && minutes <= 59) ? this.drawbreakLabels() : this.drawfocusLabels();
+    /*(minutes >= 25 && minutes <= 29) || */(minutes >= 55 && minutes <= 59) ? this.drawbreakLabels() : this.drawfocusLabels();
   },
 
   drawMinutesPointer: function() {
@@ -97,11 +97,11 @@ SVG.extend(SVG.Clock, {
 
   minutesLeft: function() {
     var minutes = this.date.getMinutes();
-    if (minutes < 25)
+    /*if (minutes < 25)
       return 24 - minutes;
     else if (minutes < 30)
       return 29 - minutes;
-    else if (minutes < 55)
+    else */if (minutes < 55)
       return 54 - minutes;
     else
       return 59 - minutes;

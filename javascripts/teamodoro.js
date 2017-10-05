@@ -63,7 +63,7 @@ Teamodoro = {
 
   inBreak: function() {
     var minutes = this.getDate().getMinutes();
-    return (minutes >= 25 && minutes <= 29) || (minutes >= 55 && minutes <= 59);
+    return /*(minutes >= 25 && minutes <= 29) || */(minutes >= 55 && minutes <= 59);
   },
 
   beepOnStateChange: function() {

@@ -1,0 +1,26 @@
+{
+  "name": "pomodeam",
+  "version": "0.0.1",
+  "description": "Synchronize with your coworkers",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adantoscano/teamodoro.git"
+  },
+  "keywords": [
+    "pomodoro",
+    "team"
+  ],
+  "author": "adantoscano",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adantoscano/teamodoro/issues"
+  },
+  "homepage": "https://github.com/adantoscano/teamodoro#readme",
+  "dependencies": {
+    "express": "^4.16.1"
+  }
+}

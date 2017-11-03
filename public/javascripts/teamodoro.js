@@ -1,16 +1,34 @@
+function notificar(titulo, texto, icono){
+  if(Notification.permission !== "granted"){
+    Notification.requestPermission();
+  }else{
+    var notification = new Notification(titulo, {
+      icon: icono,
+      body: texto
+    });
+  }
+};
+
 Teamodoro = {
   lastState: null,
   lastMinute: null,
   timeDifference: 0,
 
   start: function() {
+    if(Notification.permission !== "granted"){
+      Notification.requestPermission();
+    }
+      
     this.clock = SVG("canvas").clock("100%");
     this.updateClock();
     setInterval(this.updateClock.bind(this), 500);
     setInterval(this.displayRandomGif.bind(this), 30 * 1000);
 
-    if (this.inBreak())
+    if (this.inBreak()){
+      notificar("Pomodoro!", "5 minutitos de RELAX!", "https://thumb.ibb.co/jReGkw/teamodoro.png");
       this.displayRandomGif();
+    }
+      
 
     document.getElementById('about').addEventListener('click',function() {
       document.getElementById('why').style.display = 'block';
@@ -67,10 +85,14 @@ Teamodoro = {
   },
 
   beepOnStateChange: function() {
-    if (this.inBreak() && this.lastState == "focus")
+    if (this.inBreak() && this.lastState == "focus"){
+      notificar("Pomodoro!", "5 minutitos de RELAX!", "https://thumb.ibb.co/jReGkw/teamodoro.png");
       document.getElementById("beep").play();
-    else if (!this.inBreak() && this.lastState == "break")
+    } 
+    else if (!this.inBreak() && this.lastState == "break"){
+      notificar("Se acabó el Pomodoro!", "¡A TRABAJAR!", "https://thumb.ibb.co/jReGkw/teamodoro.png");
       document.getElementById("beep").play();
+    }  
   },
 
   updateIcon: function() {
